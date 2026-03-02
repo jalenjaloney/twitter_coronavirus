@@ -34,6 +34,6 @@ This project analyzes over 1 billion geotagged tweets from 2020 to track the spr
 ## Notes
 
 - Only `.lang` files were used for daily analysis, summing across languages.  
-- Non-Latin hashtags (Korean, Japanese, Chinese) required fonts were not available on the server.*
+- Non-Latin hashtags (Korean, Japanese, Chinese) required fonts were not available on the server.
 - All visualizations were saved as PNG files.  
 - The Lambda server enabled processing of large-scale datasets efficiently.
