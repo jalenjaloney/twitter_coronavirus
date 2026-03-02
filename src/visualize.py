@@ -23,6 +23,25 @@ if args.percent:
         counts[args.key][k] /= counts['_all'][k]
 
 # print the count values
-items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
-for k,v in items:
-    print(k,':',v)
+items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]))
+# keep only top 10 (highest values)
+items = items[-10:]
+
+# separate keys and values
+labels = [k for k,v in items]
+values = [v for k,v in items]
+
+# plotting
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.bar(labels, values)
+plt.xticks(rotation=45, ha='right')
+plt.xlabel('Key')
+plt.ylabel('Value')
+plt.title(args.key)
+
+# save figure
+output_file = os.path.basename(args.input_path) + '.' + args.key.replace('#','') + '.png'
+plt.tight_layout()
+plt.savefig(output_file)
